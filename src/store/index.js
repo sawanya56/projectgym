@@ -22,6 +22,9 @@ export default new Vuex.Store({
     addCart(state, playload) {
       state.cart.push(playload)
       state.price += playload.price
+    },
+    clearSale(state) {
+      state.cart = []
     }
   },
   actions: {
@@ -39,7 +42,10 @@ export default new Vuex.Store({
           console.log('err')
         }
       })
-      
+    },
+    submitSale( {commit} , playload) {
+      db.collection('sale').add({playload})
+      commit('clearSale')
     }
   }
 })

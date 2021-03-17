@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     addUser() {
-      this.$store.dispatch("addUser", this.user).then(this.$emit("colse"));
+      this.$store.dispatch('addUser', this.user).then(this.$emit("colse"));
     },
   },
 };

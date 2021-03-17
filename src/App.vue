@@ -11,7 +11,7 @@
     </v-btn>
     <v-spacer />
     
-    <v-btn @click="logout">
+    <v-btn @click="logout" v-if="this.$store.state.haveUser">
       logout
     </v-btn>
     <v-btn @click="loginUser" v-if="!this.$store.state.haveUser">
@@ -55,21 +55,11 @@ export default {
     },
     closeLogin() {
       this.loginDialog = false
-    // },
-    // logout() {
-    //   firebase
-    //     .auth()
-    //     .signOut()
-    //     .then(() => {
-    //       // Sign-out successful.
-    //       console.log('sign-out successful')
-    //       this.$router.replace(' ')
-    //     })
-    //     .catch((error) => {
-    //       // An error happened.
-    //       console.log(error)
-  
     },
+    logout() {
+      this.$store.state.haveUser = false
+      this.router.push('/')
+    }
   }
 }
 </script>
